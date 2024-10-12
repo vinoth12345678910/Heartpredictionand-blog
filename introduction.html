@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction - Heart Attack Prediction</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: url('bg.png') no-repeat center center/cover;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #5A9;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style-type: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .nav-links a:hover {
+            background-color: #478;
+            border-radius: 8px;
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Outer Container Styles */
+        .outer {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4rem 2rem;
+            background: url('../images/ecg-background.jpg') no-repeat center center/cover;
+            color: #fff;
+        }
+
+        /* Content Section Styles */
+        .content-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding-right: 2rem;
+        }
+
+        .content-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-section p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        /* Image Section Styles */
+        .image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #5A9;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .outer {
+                flex-direction: column;
+                align-items: center;
+                padding: 3rem 1.5rem;
+            }
+
+            .content-section {
+                align-items: center;
+                padding: 0;
+                text-align: center;
+            }
+
+            .content-section p {
+                max-width: 800px;
+            }
+
+            .image {
+                margin-top: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content-section h1 {
+                font-size: 2rem;
+            }
+
+            .content-section p {
+                font-size: 1rem;
+            }
+
+            .image img {
+                max-width: 250px;
+            }
+
+            .navbar {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                display: none; /* Hidden by default */
+                background-color: #5A9;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 1rem 0;
+            }
+
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+
+            .hamburger {
+                display: flex;
+                position: absolute;
+                top: 1.5rem;
+                right: 2rem;
+            }
+
+            .content-section h1 {
+                font-size: 1.5rem;
+            }
+
+            .content-section p {
+                font-size: 0.9rem;
+            }
+
+            .image img {
+                max-width: 200px;
+            }
+        }
+
+        /* Active Navbar for Mobile */
+        .nav-active {
+            display: flex;
+        }
+
+        /* Hamburger Animation */
+        .toggle .line1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .toggle .line2 {
+            opacity: 0;
+        }
+
+        .toggle .line3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">HeartCare</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="introduction.html">Introduction</a></li>
+            <li><a href="signal-extraction.html">Signal Extraction</a></li>
+            <li><a href="representation.html">Representation</a></li>
+            <li><a href="real-time-ecg.html">Real-time ECG Signal</a></li>
+            <li><a href="extraction.html">Model Performance Visualization</a></li>
+            <li><a href="result.html">Result</a></li>
+        </ul>
+        <div class="hamburger" aria-label="Toggle navigation" aria-expanded="false" role="button" tabindex="0">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+    <div class="outer">
+        <div class="inner">
+            <section class="content-section">
+                <h1>INTRODUCTION</h1>
+                <p>
+                    In today's fast-paced world, heart health has become a critical concern, with cardiovascular diseases being one of the leading causes of mortality worldwide. Early detection and preventive measures are crucial for minimizing the risk of heart-related complications. With advancements in technology, bio-signal processing and machine learning algorithms are offering new ways to predict potential risks, enabling timely intervention.
+
+                    Our project focuses on predicting heart rate and assessing the risk of a heart attack using real-time ECG (Electrocardiogram) data, combined with demographic factors like age and sex. By analyzing various health indicators, our system identifies abnormal heart patterns, providing a data-driven solution for personalized healthcare.
+                    
+                    This innovative approach leverages machine learning algorithms to process bio-signals, making accurate heart rate predictions, and offering insights into a person’s cardiovascular health. By predicting the likelihood of a heart attack, our system helps users take proactive steps to improve their well-being. Stay tuned to learn more about how this technology is revolutionizing the way we monitor and maintain heart health.</p>
+            </section>
+        </div>
+        <div class="image">
+            <img src="heart.png" alt="ECG Graph">
+        </div>
+    </div>
+    <footer>
+        <p>© 2024 HeartCare. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Hamburger Menu -->
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            hamburger.classList.toggle('toggle');
+
+            // Update ARIA attribute
+            const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+            hamburger.setAttribute('aria-expanded', !expanded);
+        });
+
+        // Close the menu when a link is clicked (optional)
+        const navItems = document.querySelectorAll('.nav-links li a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('nav-active');
+                hamburger.classList.remove('toggle');
+                hamburger.setAttribute('aria-expanded', false);
+            });
+        });
+    </script>
+</body>
+</html>

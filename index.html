@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Attack Prediction</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff; /* Changed to white for better contrast */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: url('bg.png') no-repeat center center/cover;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #5A9;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style-type: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .nav-links a:hover {
+            background-color: #478;
+            border-radius: 8px;
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Main Section Styles */
+        .main-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: url('main.jpg') no-repeat center center/cover;
+            color: #fff; /* Changed to white for better contrast */
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-section h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .main-section p {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        .main-section h3 {
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            font-weight: normal;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background-color: #478;
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            transition: background-color 0.3s ease-in-out;
+            text-decoration: none;
+        }
+
+        .cta-btn:hover {
+            background-color: #56A;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #5A9;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .navbar {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                display: none; /* Hidden by default */
+                background-color: #5A9;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 1rem 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .nav-active {
+                display: flex;
+            }
+
+            .main-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .main-section p {
+                font-size: 1.3rem;
+                max-width: 700px;
+            }
+
+            .main-section h3 {
+                font-size: 1rem;
+            }
+
+            .image img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+                position: absolute;
+                top: 1.5rem;
+                right: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                display: none; /* Hidden by default */
+                background-color: #5A9;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 1rem 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .nav-active {
+                display: flex;
+            }
+
+            .main-section h1 {
+                font-size: 2rem;
+            }
+
+            .main-section p {
+                font-size: 1rem;
+                max-width: 600px;
+            }
+
+            .main-section h3 {
+                font-size: 0.9rem;
+            }
+
+            .cta-btn {
+                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem;
+            }
+
+            .hamburger {
+                position: absolute;
+                top: 1rem;
+                right: 1.5rem;
+            }
+
+            .nav-links {
+                width: 100%;
+                display: none; /* Hidden by default */
+                flex-direction: column;
+                align-items: center;
+                background-color: #5A9;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 1rem 0;
+            }
+
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+
+            .nav-active {
+                display: flex;
+            }
+
+            .main-section h1 {
+                font-size: 1.8rem;
+            }
+
+            .main-section p {
+                font-size: 0.9rem;
+                max-width: 90%;
+            }
+
+            .main-section h3 {
+                font-size: 0.8rem;
+            }
+
+            .cta-btn {
+                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+
+        /* Hamburger Animation */
+        .toggle .line1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .toggle .line2 {
+            opacity: 0;
+        }
+
+        .toggle .line3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">HeartCare</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="introduction.html">Introduction</a></li>
+            <li><a href="signal-extraction.html">Signal Extraction</a></li>
+            <li><a href="representation.html">Representation</a></li>
+            <li><a href="real-time-ecg.html">Real-time ECG Signal</a></li>
+            <li><a href="code-result.html">Code</a></li>
+            <li><a href="extraction.html">Model Performance Visualization</a></li>
+            <li><a href="result.html">Result</a></li>
+        </ul>
+        <div class="hamburger" aria-label="Toggle navigation" aria-expanded="false" role="button" tabindex="0">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- Main Section -->
+    <header class="main-section">
+        <h1>Heart Attack Prediction Using Machine Learning</h1>
+        <p>Predict heart attacks using real-time ECG signals and logistic regression algorithms.</p>
+        <h3>BY VINAY ANAND & AARAV KANNAN J (RA2211013020008, RA2211013020066) - BTECH BIOMEDICAL ENGINEERING 3RD YEAR</h3>
+        <a href="introduction.html" class="cta-btn">Learn More</a>
+    </header>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 HeartCare. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Hamburger Menu -->
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            hamburger.classList.toggle('toggle');
+
+            // Update ARIA attribute
+            const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+            hamburger.setAttribute('aria-expanded', !expanded);
+        });
+
+        // Close the menu when a link is clicked (optional)
+        const navItems = document.querySelectorAll('.nav-links li a');
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('nav-active');
+                hamburger.classList.remove('toggle');
+                hamburger.setAttribute('aria-expanded', false);
+            });
+        });
+    </script>
+</body>
+</html>
+
